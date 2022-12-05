@@ -1,0 +1,4 @@
+- name: creating jobs for roboshop project
+  hosts: localhost
+  roles:
+    - jenkins-jobs
