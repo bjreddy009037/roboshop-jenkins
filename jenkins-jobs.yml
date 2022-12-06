@@ -4,7 +4,7 @@
     - jenkins-jobs
   vars:
     folders:
-      - demo
+      - App-Setup-Ansible
     pipeline_jobs:
-     - { jobName: "sample009", folderName: "demo", repoName: "learning-jenkins"}
+     - { jobName: "sample009", folderName: "App-Setup-Ansible", repoName: "learning-jenkins"}
 
