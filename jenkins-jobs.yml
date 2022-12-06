@@ -2,3 +2,9 @@
   hosts: localhost
   roles:
     - jenkins-jobs
+  vars:
+    folders:
+      - demo
+    pipeline_jobs:
+     - { jobName: "sample009", folderName: "demo", repoName: "learning-jenkins"}
+

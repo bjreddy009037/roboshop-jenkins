@@ -1,19 +1,16 @@
-- name: Create a jenkins job using basic authentication
+- name: Create a folder inside jenkins
   community.general.jenkins_job:
     config: "{{ lookup('file', 'templates/folder.xml') }}"
     name: "{{item}}"
     password: admin
     url: http://172.31.12.209:8080
     user: admin
-  loop:
-    - demo
+  loop: "{[folders]}"
 
-- name: Create a jenkins job using basic authentication
-  community.general.jenkins_job:
-    config: "{{ lookup('file', 'templates/pipeline-jobs.xml') }}"
-    name: "{{item.folderName}}/{{item.jobName}}"
-    password: admin
-    url: http://172.31.12.209:8080
-    user: admin
-  loop:
-    - { jobName: "sample009", folderName: "demo"}
+
+- name: create a pipeline job
+  include_role:
+    name: jenkins-jobs
+    tasks_from: pipeline-jobs
+  loop: "{{pipeline_jobs}}"
+
