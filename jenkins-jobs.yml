@@ -6,5 +6,5 @@
     folders:
       - App-Setup-Ansible
     pipeline_jobs:
-     - { jobName: "roboshop", folderName: "App-Setup-Ansible", repoName: "learning-jenkins"}
+     - { jobName: "roboshop", folderName: "App-Setup-Ansible", repoName: "roboshop-ansible"}
 
