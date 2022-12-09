@@ -9,4 +9,9 @@
     pipeline_jobs:
      - { jobName: "roboshop", folderName: "App-Setup-Ansible", repoName: "roboshop-ansible"}
      - { jobName: "cart", folderName: "infrastrutre", repoName: "cart-infra"}
+     - { jobName: "user", folderName: "infrastrutre", repoName: "user-infra"}
+     - { jobName: "payment", folderName: "infrastrutre", repoName: "payment-infra"}
+     - { jobName: "shipping", folderName: "infrastrutre", repoName: "shipping-infra"}
+     - { jobName: "frontend", folderName: "infrastrutre", repoName: "frontend-infra"}
+     - { jobName: "catalogue", folderName: "infrastrutre", repoName: "catalogue-infra"}
 
