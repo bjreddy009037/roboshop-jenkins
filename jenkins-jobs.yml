@@ -5,6 +5,8 @@
   vars:
     folders:
       - App-Setup-Ansible
+      - infrastrutre
     pipeline_jobs:
      - { jobName: "roboshop", folderName: "App-Setup-Ansible", repoName: "roboshop-ansible"}
+     - { jobName: "cart", folderName: "infrastrutre", repoName: "cart-infra"}
 
