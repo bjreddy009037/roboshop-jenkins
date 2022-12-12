@@ -7,11 +7,12 @@
       - App-Setup-Ansible
       - infrastrutre
     pipeline_jobs:
-     - { jobName: "roboshop", folderName: "App-Setup-Ansible", repoName: "roboshop-ansible"}
-     - { jobName: "cart", folderName: "infrastrutre", repoName: "cart-infra"}
-     - { jobName: "user", folderName: "infrastrutre", repoName: "user-infra"}
-     - { jobName: "payment", folderName: "infrastrutre", repoName: "payment-infra"}
-     - { jobName: "shipping", folderName: "infrastrutre", repoName: "shipping-infra"}
-     - { jobName: "frontend", folderName: "infrastrutre", repoName: "frontend-infra"}
-     - { jobName: "catalogue", folderName: "infrastrutre", repoName: "catalogue-infra"}
+     - { jobName: "roboshop", folderName: "App-Setup-Ansible", repoName: "roboshop-ansible", FileName: "Jenkinsfile"}
+     - { jobName: "cart", folderName: "infrastrutre", repoName: "cart-infra", FileName: "Jenkinsfile"}
+     - { jobName: "user", folderName: "infrastrutre", repoName: "user-infra", FileName: "Jenkinsfile"}
+     - { jobName: "payment", folderName: "infrastrutre", repoName: "payment-infra", FileName: "Jenkinsfile"}
+     - { jobName: "shipping", folderName: "infrastrutre", repoName: "shipping-infra", FileName: "Jenkinsfile"}
+     - { jobName: "frontend", folderName: "infrastrutre", repoName: "frontend-infra", FileName: "Jenkinsfile"}
+     - { jobName: "catalogue", folderName: "infrastrutre", repoName: "catalogue-infra", FileName: "Jenkinsfile"}
+     - { jobName: "DESTROY", folderName: "infrastrutre", repoName: "robosho-jenkins", FileName: "Jenkinsfile-destroy-infra"}
 
