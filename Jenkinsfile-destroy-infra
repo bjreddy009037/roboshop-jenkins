@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    ENV = 'dev'
+    ENV = "dev"
   }
 
   stages {
@@ -11,19 +11,68 @@ pipeline {
 
       parallel {
 
-        stage {
+        stage('CART') {
           steps {
             dir('CART') {
               git branch: 'main', url: 'https://github.com/bjreddy009/cart-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
-              sh terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
           }
         }
 
+        stage('CATALOGUE') {
+          steps {
+            dir('CATALOGUE') {
+              git branch: 'main', url: 'https://github.com/bjreddy009/catalogue-infra.git'
+              sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
+              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+            }
+          }
+        }
+
+        stage('USER') {
+          steps {
+            dir('USER') {
+              git branch: 'main', url: 'https://github.com/bjreddy009/user-infra.git'
+              sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
+              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+            }
+          }
+        }
+
+
+
+        stage('PAYMENT') {
+          steps {
+            dir('PAYMENT') {
+              git branch: 'main', url: 'https://github.com/bjreddy009/payment-infra.git'
+              sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
+              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+            }
+          }
+        }
+
+        stage('SHIPPING') {
+          steps {
+            dir('SHIPPING') {
+              git branch: 'main', url: 'https://github.com/bjreddy009/shipping-infra.git'
+              sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
+              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+            }
+          }
+        }
+
+      }
     }
 
+
   }
+
+  post {
+    always {
+      cleanWs()
+    }
   }
 
 }
