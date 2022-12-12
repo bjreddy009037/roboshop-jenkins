@@ -1,0 +1,29 @@
+pipeline {
+  agent any
+
+  environment {
+    ENV = 'dev'
+  }
+
+  stages {
+
+    stage('DESTROY') {
+
+      parallel {
+
+        stage {
+          steps {
+            dir('CART') {
+              git branch: 'main', url: 'https://github.com/bjreddy009/cart-infra.git'
+              sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
+              sh terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+            }
+          }
+        }
+
+    }
+
+  }
+  }
+
+}
