@@ -15,4 +15,4 @@
      - { jobName: "frontend", folderName: "infrastrutre", repoName: "frontend-infra", FileName: "Jenkinsfile"}
      - { jobName: "catalogue", folderName: "infrastrutre", repoName: "catalogue-infra", FileName: "Jenkinsfile"}
      - { jobName: "DESTROY", folderName: "infrastrutre", repoName: "roboshop-jenkins", FileName: "Jenkinsfile-destroy-infra"}
-
+     - { jobName: "transit-tgw", folderName: "infrastrutre", repoName: "terraform-vpc-transit-setup", FileName: "Jenkinsfile"}
