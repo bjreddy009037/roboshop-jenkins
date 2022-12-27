@@ -7,7 +7,17 @@ pipeline {
 
   stages {
 
-    stage('DESTROY') {
+    stage('DEFAULT-TGW') {
+       steps {
+          dir('DEFAULT-TGW') {
+             git branch: 'main', url: 'https://github.com/bjreddy009037/terraform-vpc-transit-setup.git'
+             sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
+             sh 'terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+          }
+       }
+    }
+
+    stage('CREATE') {
 
       parallel {
 
@@ -16,7 +26,7 @@ pipeline {
             dir('CART') {
               git branch: 'main', url: 'https://github.com/bjreddy009037/cart-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
-              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+              sh 'terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
           }
         }
@@ -25,7 +35,7 @@ pipeline {
              dir('FRONTEND') {
                git branch: 'main', url: 'https://github.com/bjreddy009037/frontend-infra.git'
                sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
-               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+               sh 'terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
              }
            }
         }
@@ -35,7 +45,7 @@ pipeline {
             dir('CATALOGUE') {
               git branch: 'main', url: 'https://github.com/bjreddy009037/catalogue-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
-              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+              sh 'terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
           }
         }
@@ -45,7 +55,7 @@ pipeline {
             dir('USER') {
               git branch: 'main', url: 'https://github.com/bjreddy009037/user-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
-              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+              sh 'terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
           }
         }
@@ -57,21 +67,11 @@ pipeline {
             dir('PAYMENT') {
               git branch: 'main', url: 'https://github.com/bjreddy009037/payment-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
-              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+              sh 'terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
           }
         }
 
-
-        stage('DEFAULT-TGW') {
-          steps {
-            dir('DEFAULT-TGW') {
-               git branch: 'main', url: 'https://github.com/bjreddy009037/terraform-vpc-transit-setup.git'
-               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
-               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
-            }
-          }
-        }
 
       }
     }
