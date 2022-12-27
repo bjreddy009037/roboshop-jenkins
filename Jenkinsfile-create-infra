@@ -17,7 +17,7 @@ pipeline {
        }
     }
 
-    stage('CREATE') {
+    stage('ALL-COMPONENTS') {
 
       parallel {
 
