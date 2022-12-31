@@ -50,8 +50,6 @@ pipeline {
           }
         }
 
-
-
         stage('PAYMENT') {
           steps {
             dir('PAYMENT') {
@@ -71,8 +69,6 @@ pipeline {
             }
           }
         }
-
-
 
       }
     }
